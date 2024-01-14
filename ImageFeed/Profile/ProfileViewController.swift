@@ -1,86 +1,96 @@
 import UIKit
 
 final class ProfileViewController: UIViewController{
-    @IBOutlet weak var superview: UIView!
-    private var subviews: [UIView] = []
+    
+    private var profileImageVar: UIImageView?
+    private var userNameVar: UILabel?
+    private var userLoginVar: UILabel?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        profileImage()
-        userName()
-        userLogin()
-        userMessage()
-        logoutButton()
+        createProfileImageView()
+        createUserNameLabel()
+        createUserLoginLabel()
+        createUserMessageLabel()
+        createLogoutButton()
     }
     
-    private func profileImage() {
-        let image = UIImage(named: "Avatar")
-        let imageView = UIImageView(image: image)
+    private func createProfileImageView() {
+        let imageView = UIImageView(image: UIImage(named: "Avatar"))
+        
+        imageView.layer.cornerRadius = 35
+        imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        subviews.append(imageView)
         view.addSubview(imageView)
         
-        NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: superview.topAnchor, constant: 76),
-            imageView.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16)
-        ])
+        
+        imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        self.profileImageVar = imageView
     }
     
-    private func userName() {
+    private func createUserNameLabel() {
         let username = UILabel()
+        
         username.translatesAutoresizingMaskIntoConstraints = false
         username.textAlignment = .left
         username.text = "Ольга Илюшина"
-        username.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        username.textColor = UIColor(named: "YP White")
         username.font = UIFont.boldSystemFont(ofSize: 23)
-        subviews.append(username)
         view.addSubview(username)
-        NSLayoutConstraint.activate([
-            username.topAnchor.constraint(equalTo: subviews[0].bottomAnchor, constant: 8),
-            username.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16)
-        ])
+        username.topAnchor.constraint(equalTo: self.profileImageVar!.bottomAnchor, constant: 8).isActive = true
+        username.leadingAnchor.constraint(equalTo: profileImageVar!.leadingAnchor).isActive = true
+        username.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
+        self.userNameVar = username
     }
     
-    private func userLogin() {
+    private func  createUserLoginLabel() {
         let userLogin = UILabel()
         userLogin.translatesAutoresizingMaskIntoConstraints = false
         userLogin.textAlignment = .left
         userLogin.text = "@olgailulu"
-        userLogin.textColor = UIColor(red: 0.682, green: 0.686, blue: 0.706, alpha: 1)
+        userLogin.textColor = UIColor(named: "YP Gray")
         userLogin.font = UIFont.systemFont(ofSize: 13)
-        subviews.append(userLogin)
-        superview.addSubview(userLogin)
-        NSLayoutConstraint.activate([
-            userLogin.topAnchor.constraint(equalTo: subviews[1].bottomAnchor, constant: 8),
-            userLogin.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16)
-        ])
+        view.addSubview(userLogin)
+        
+        userLogin.topAnchor.constraint(equalTo: userNameVar!.bottomAnchor, constant: 8).isActive = true
+        userLogin.leadingAnchor.constraint(equalTo: userNameVar!.leadingAnchor).isActive = true
+        userLogin.trailingAnchor.constraint(equalTo: userNameVar!.trailingAnchor).isActive = true
+        self.userLoginVar = userLogin
     }
     
-    private func userMessage() {
+    private func createUserMessageLabel() {
         let userMessage = UILabel()
         userMessage.translatesAutoresizingMaskIntoConstraints = false
         userMessage.textAlignment = .left
         userMessage.text = "Avada Kedavra!"
-        userMessage.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        userMessage.textColor = UIColor(named: "YP White")
         userMessage.font = UIFont.systemFont(ofSize: 13)
-        subviews.append(userMessage)
-        superview.addSubview(userMessage)
-        NSLayoutConstraint.activate([
-            userMessage.topAnchor.constraint(equalTo: subviews[2].bottomAnchor, constant: 8),
-            userMessage.leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: 16)
-        ])
+        view.addSubview(userMessage)
+        
+        userMessage.topAnchor.constraint(equalTo: userLoginVar!.bottomAnchor, constant: 8).isActive = true
+        userMessage.leadingAnchor.constraint(equalTo: userNameVar!.leadingAnchor).isActive = true
+        userMessage.trailingAnchor.constraint(equalTo: userNameVar!.trailingAnchor).isActive = true
+        
     }
     
-    private func logoutButton() {
-        let logoutButton = UIButton(type: .custom)
+    private func createLogoutButton() {
+        let logoutButton = UIButton()
         logoutButton.translatesAutoresizingMaskIntoConstraints = false
-        logoutButton.setTitle("", for: .normal)
         logoutButton.setImage(UIImage(named: "Logout"), for: .normal)
-        subviews.append(logoutButton)
-        superview.addSubview(logoutButton)
-        NSLayoutConstraint.activate([
-            logoutButton.topAnchor.constraint(equalTo: superview.topAnchor, constant: 89),
-            logoutButton.trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: -16)
-        ])
+        logoutButton.addTarget(self, action: #selector(Self.didTapLogoutButton), for: UIControl.Event.touchUpInside)
+        view.addSubview(logoutButton)
+        
+        logoutButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 55).isActive = true
+        logoutButton.leadingAnchor.constraint(greaterThanOrEqualTo: profileImageVar!.trailingAnchor).isActive = true
+        logoutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
+    }
+    
+    @objc
+    private func didTapLogoutButton() {
+        
     }
 }
