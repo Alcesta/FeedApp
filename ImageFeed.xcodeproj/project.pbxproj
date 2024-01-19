@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		132A32BE2B5A7349002924D8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132A32BD2B5A7349002924D8 /* Constants.swift */; };
+		132A32C12B5A7E58002924D8 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132A32C02B5A7E58002924D8 /* AuthViewController.swift */; };
 		136416D42B322AE200498E53 /* ImagesListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136416D32B322AE200498E53 /* ImagesListCell.swift */; };
 		136416DB2B3B09C600498E53 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136416DA2B3B09C600498E53 /* ProfileViewController.swift */; };
 		136416DD2B3EE1E800498E53 /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136416DC2B3EE1E800498E53 /* SingleImageViewController.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		132A32BD2B5A7349002924D8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		132A32C02B5A7E58002924D8 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		136416D32B322AE200498E53 /* ImagesListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesListCell.swift; sourceTree = "<group>"; };
 		136416DA2B3B09C600498E53 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		136416DC2B3EE1E800498E53 /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		132A32BF2B5A7E3A002924D8 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				132A32C02B5A7E58002924D8 /* AuthViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		136416D52B322C2000498E53 /* ImagesList */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +101,8 @@
 			children = (
 				13B7FE562B1A244E00C1EE74 /* AppDelegate.swift */,
 				13B7FE582B1A244E00C1EE74 /* SceneDelegate.swift */,
+				132A32BD2B5A7349002924D8 /* Constants.swift */,
+				132A32BF2B5A7E3A002924D8 /* Auth */,
 				136416DE2B3EE2C000498E53 /* SingleImageView */,
 				136416D92B3B099700498E53 /* Profile */,
 				136416D52B322C2000498E53 /* ImagesList */,
@@ -175,6 +189,8 @@
 				136416D42B322AE200498E53 /* ImagesListCell.swift in Sources */,
 				136416DB2B3B09C600498E53 /* ProfileViewController.swift in Sources */,
 				13B7FE572B1A244E00C1EE74 /* AppDelegate.swift in Sources */,
+				132A32C12B5A7E58002924D8 /* AuthViewController.swift in Sources */,
+				132A32BE2B5A7349002924D8 /* Constants.swift in Sources */,
 				136416DD2B3EE1E800498E53 /* SingleImageViewController.swift in Sources */,
 				13B7FE592B1A244E00C1EE74 /* SceneDelegate.swift in Sources */,
 			);
