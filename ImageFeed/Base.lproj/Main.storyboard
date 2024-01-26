@@ -315,7 +315,7 @@
         <!--SplashViewController-->
         <scene sceneID="kWf-xt-tiT">
             <objects>
-                <viewController id="itX-VN-Tv7" userLabel="SplashViewController" sceneMemberID="viewController">
+                <viewController id="itX-VN-Tv7" userLabel="SplashViewController" customClass="SplashViewController" customModule="ImageFeed" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PVX-QZ-Fjj">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -343,7 +343,6 @@
         <!--Navigation Controller-->
         <scene sceneID="VOD-gc-NnF">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="smk-CA-Dv8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gWY-fq-laN" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UYW-ia-Ub5">
@@ -355,6 +354,7 @@
                         <segue destination="ZIv-wO-YDw" kind="relationship" relationship="rootViewController" id="Iyo-gE-bWB"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="smk-CA-Dv8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="481.67938931297709" y="-679.57746478873241"/>
         </scene>
