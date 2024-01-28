@@ -2,9 +2,9 @@ import Foundation
 import UIKit
 
 final class SplashViewController: UIViewController {
-
+    
     private let showAuthScreenId = "ShowAuthenticationScreen"
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if OAuth2TokenStorage().token != nil {
@@ -13,7 +13,7 @@ final class SplashViewController: UIViewController {
             performSegue(withIdentifier: showAuthScreenId, sender: nil)
         }
     }
-
+    
     private func switchToTabBarController() {
         guard let window = UIApplication.shared.windows.first else {
             fatalError("Invalid Configuration")
@@ -44,7 +44,7 @@ extension SplashViewController: AuthViewControllerDelegate {
             self.fetchOAuthToken(code)
         }
     }
-
+    
     private func fetchOAuthToken(_ code: String) {
         OAuth2Service.shared.fetchAuthToken(code: code) { [weak self] result in
             guard let self = self else { return }

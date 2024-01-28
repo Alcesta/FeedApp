@@ -1,14 +1,15 @@
 import Foundation
 
 final class OAuth2Service {
-
+    
     static let shared = OAuth2Service()
-
+    private init() {}
+    
     private (set) var authToken: String? {
         get { OAuth2TokenStorage().token }
         set { OAuth2TokenStorage().token = newValue}
     }
-
+    
     private func makeURL(code: String) -> URLComponents {
         var urlComponents = URLComponents(string: "https://unsplash.com/oauth/token")!
         urlComponents.queryItems = [URLQueryItem(name: "client_id", value: accessKey),
@@ -18,7 +19,7 @@ final class OAuth2Service {
                                     URLQueryItem(name: "grant_type", value: "authorization_code")]
         return urlComponents
     }
-
+    
     func fetchAuthToken(code: String, completion: @escaping (Result<String, Error>) -> Void) {
         guard let url = makeURL(code: code).url else {
             completion(.failure(NetworkError.badURL))
