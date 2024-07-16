@@ -1,0 +1,54 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "BYZ-38-t0r.title" : {
+      "comment" : "Class = \"UIViewController\"; title = \"ImageList\"; ObjectID = \"BYZ-38-t0r\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "ImageList"
+          }
+        }
+      }
+    },
+    "cLb-N1-BTh.configuration.title" : {
+      "comment" : "Class = \"UIButton\"; configuration.title = \"Войти\"; ObjectID = \"cLb-N1-BTh\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Войти"
+          }
+        }
+      }
+    },
+    "cLb-N1-BTh.normalTitle" : {
+      "comment" : "Class = \"UIButton\"; normalTitle = \"Button\"; ObjectID = \"cLb-N1-BTh\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Button"
+          }
+        }
+      }
+    },
+    "ESu-IF-6Ut.text" : {
+      "comment" : "Class = \"UILabel\"; text = \"27 августа 2022\"; ObjectID = \"ESu-IF-6Ut\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "27 августа 2022"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
