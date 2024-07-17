@@ -1,6 +1,8 @@
 
 import Foundation
 
+// MARK: - Network Connection
+
 extension URLSession {
     func objectTask<T: Decodable>(for request: URLRequest, completion: @escaping (Result<T, Error>) -> Void) -> URLSessionTask {
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -46,3 +48,4 @@ extension URLRequest {
         return request
     }
 }
+
