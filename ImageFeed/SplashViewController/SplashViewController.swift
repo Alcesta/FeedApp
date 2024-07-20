@@ -1,4 +1,3 @@
-
 import Foundation
 import UIKit
 import ProgressHUD
@@ -7,6 +6,7 @@ final class SplashViewController: UIViewController {
     
     private let showAuthScreenId = "ShowAuthenticationScreen"
     private let profileService = ProfileService.shared
+    private let oAuth2Service = OAuth2Service.shared
     private var blockingProgressHUD = UIBlockingProgressHUD()
     private var logoView: UIImageView?
     
@@ -49,7 +49,7 @@ final class SplashViewController: UIViewController {
     }
 }
 
-// MARK: - Extensions SplashViewController - private func
+// MARK: - Extensions SplashViewController
 
 extension SplashViewController: AuthViewControllerDelegate {
     
