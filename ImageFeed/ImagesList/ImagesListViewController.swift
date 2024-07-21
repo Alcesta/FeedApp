@@ -36,13 +36,20 @@ final class ImagesListViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == showSingleImageSegueIdentifier {
-            let viewController = segue.destination as! SingleImageViewController
-            let indexPath = sender as! IndexPath
-            viewController.urlString = photos[indexPath.row].largeImageURL
-        } else {
-            super.prepare(for: segue, sender: sender)
-        }
-    }
+           if let viewController = segue.destination as? SingleImageViewController,
+                let indexPath = sender as? IndexPath {
+               if indexPath.row < photos.count {
+                              viewController.urlString = photos[indexPath.row].largeImageURL
+                          } else {
+                              print("Error: indexPath.row out of bounds")
+                          }
+                      } else {
+                          print("Error: wrong type for segue.destination or sender")
+                      }
+                  } else {
+                      super.prepare(for: segue, sender: sender)
+                  }
+              }
     
     func configCell(for cell: ImagesListCell, with indexPath: IndexPath) {
         let photo = photos[indexPath.row]
@@ -126,13 +133,14 @@ extension ImagesListViewController: ImagesListCellDelegate {
         UIBlockingProgressHUD.show()
         imagesListService.changeLike(photoId: photo.id, isLike: photo.isLiked) {[weak self] (result: Result<IsLike, Error>) in
             guard let self = self else { return }
+            defer {
+                UIBlockingProgressHUD.dismiss()
+                       }
             switch result {
             case .success:
                 self.photos[indexPath.row].isLiked.toggle()
                 cell.setIsLiked(isLikeButton: self.photos[indexPath.row].isLiked)
-                UIBlockingProgressHUD.dismiss()
             case .failure(let error):
-                UIBlockingProgressHUD.dismiss()
                 print(error)
             }
         }

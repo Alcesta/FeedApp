@@ -12,12 +12,27 @@ final class ImagesListService {
     private init() {}
     
     func fetchPhotosNextPage() {
-        let nextPage = lastLoadedPage == nil ? 1 : lastLoadedPage! + 1
-        assert(Thread.isMainThread)
-        guard task == nil else {return}
+        
+        guard Thread.isMainThread else {
+            DispatchQueue.main.async {
+                self.fetchPhotosNextPage()
+            }
+            return
+        }
+        
+        let nextPage = (lastLoadedPage ?? 0) + 1
+
+        guard task == nil else { return }
+
         let path = "/photos?page=\(nextPage)&per_page=10"
         var request = URLRequest.makeHTTPRequest(path: path, httpMethod: "GET")
-        request.setValue("Bearer \(OAuth2TokenStorage().token!)", forHTTPHeaderField: "Authorization")
+
+        guard let token = OAuth2TokenStorage().token else {
+            print("Error: No OAuth token available.")
+            return
+        }
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
         
         let task = urlSession.objectTask(for: request) { [weak self] (result: Result<[PhotoResult], Error>) in
             guard let self = self else { return }
