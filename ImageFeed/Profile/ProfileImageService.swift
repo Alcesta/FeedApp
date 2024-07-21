@@ -31,24 +31,6 @@ final class ProfileImageService {
         
         let task = urlSession.objectTask(for: request) { [weak self] (result: Result<UserResult, Error>) in
             guard let self = self else { return }
-            //            switch result {
-            //            case .success(let userResult):
-            //                self.avatarURL = userResult.profileImage["large"]
-            //                completion(.success(self.avatarURL!))
-            //                NotificationCenter.default
-            //                    .post(
-            //                        name: ProfileImageService.didChangeNotification,
-            //                        object: self,
-            //                        userInfo: ["URL": self.avatarURL!])
-            //            case .failure(let error):
-            //                self.task = nil
-            //                completion(.failure(error))
-            //            }
-            //        }
-            //        self.task = task
-            //        task.resume()
-            //    }
-            //}
             DispatchQueue.main.async {
                 switch result {
                 case .success(let userResult):
