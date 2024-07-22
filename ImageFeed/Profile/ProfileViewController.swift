@@ -1,4 +1,3 @@
-
 import UIKit
 import Kingfisher
 
@@ -43,7 +42,7 @@ final class ProfileViewController: UIViewController {
         let processor = RoundCornerImageProcessor(cornerRadius: 40)
         avatarViewVar.kf.setImage(
             with: url,
-            placeholder: UIImage(named: "userpickStub"),
+            placeholder: UIImage(named: "Photo"),
             options: [.processor(processor)])
     }
     
@@ -111,6 +110,35 @@ final class ProfileViewController: UIViewController {
     
     @objc
     private func didTapLogoutButton() {
-        
+        showAlert()
+    }
+    
+    private func showAlert() {
+        let alert = UIAlertController(
+            title: "Пока, пока!",
+            message: "Уверены, что хотите выйти?",
+            preferredStyle: .alert)
+        let alertActionYes = UIAlertAction(title: "Да", style: .default) {[weak self] _ in
+            guard let self = self else { return }
+            WebViewViewController.clean()
+            self.logout()
+        }
+        let alertActionNo = UIAlertAction(title: "Нет", style: .default) {[weak self] _ in
+            guard let self = self else { return }
+            self.dismiss(animated: true)
+        }
+        alert.addAction(alertActionYes)
+        alert.addAction(alertActionNo)
+        let vc = self.presentedViewController ?? self
+        vc.present(alert, animated: true)
+    }
+    
+    private func logout() {
+        OAuth2TokenStorage().token = nil
+        guard let window = UIApplication.shared.windows.first else {
+            assertionFailure("Invalid Configuration")
+            return
+        }
+        window.rootViewController = SplashViewController()
     }
 }
