@@ -1,8 +1,45 @@
-//
-//  ImagesListTests.swift
-//  ImageFeedTests
-//
-//  Created by Olga Ilyushina on 24.07.2024.
-//
+@testable import ImageFeed
+import XCTest
 
-import Foundation
+final class ImagesListTests: XCTestCase {
+    func testViewControllerCallsViewDidLoad() {
+        //given
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ImagesListViewController") as! ImagesListViewController
+        let presenter = ImagesListPresenterSpy(view: viewController)
+        
+        //when
+        presenter.viewDidLoad()
+        
+        //then
+        XCTAssertTrue(presenter.viewDidLoadCalledForTest)
+    }
+    
+    func testConvertDate() {
+        //given
+        let viewController = ImagesListViewControllerSpy()
+        let presenter = ImagesListPresenter(view: viewController)
+        viewController.presenter = presenter
+        let photo = Photo(id: "1", size: CGSize(width: 70, height: 70), createdAt: Date(), welcomeDescription: "Hello", thumbImageURL: "", largeImageURL: "", isLiked: false)
+        
+        //when
+        let date = presenter.convertDate(photo: photo)
+        
+        //then
+        XCTAssertEqual(date, "24 July 2024")
+    }
+    
+    func testImageHeight() {
+        //given
+        let viewController = ImagesListViewControllerSpy()
+        let presenter = ImagesListPresenterSpy(view: viewController)
+        viewController.presenter = presenter
+        
+        //when
+        let imageHeight = presenter.findImageHeight(index: 0, imageViewWidth: CGFloat(integerLiteral: 80))
+        
+        //then
+        XCTAssertEqual(imageHeight, CGFloat(integerLiteral: 80))
+    }
+}
+
