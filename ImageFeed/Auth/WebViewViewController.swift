@@ -35,8 +35,6 @@ final class WebViewViewController: UIViewController, WebViewViewControllerProtoc
         webView.navigationDelegate = self
         webView.accessibilityIdentifier = "UnsplashWebView"
         presenter?.viewDidLoad()
-//        loadWebView()
-//        updateProgress()
     }
     
     @IBAction private func didTapBackButton(_ sender: Any) {

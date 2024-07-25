@@ -16,12 +16,6 @@ final class ImagesListViewController: UIViewController, ImagesListViewController
     private var imageListServiceObserver: NSObjectProtocol?
     
     var presenter: ImagesListPresenterProtocol?
-//    private lazy var dateFormatter: DateFormatter = {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "dd MMMM yyyy"
-//        formatter.locale = Locale(identifier: "ru_RU")
-//        return formatter
-//    }()
     
     // MARK: - Override func
     
@@ -29,16 +23,6 @@ final class ImagesListViewController: UIViewController, ImagesListViewController
         super.viewDidLoad()
         tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
         
-//        imageListServiceObserver = NotificationCenter.default
-//            .addObserver(
-//                forName: ImagesListService.didChangeNotification,
-//                object: nil,
-//                queue: .main) {[weak self] _ in
-//                    guard let self = self else { return }
-//                    self.updateTableViewAnimated()
-//                }
-//        self.imagesListService.fetchPhotosNextPage()
-//    }
         presenter = ImagesListPresenter(view: self)
         presenter?.viewDidLoad()
     }
