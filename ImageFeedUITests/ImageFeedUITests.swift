@@ -71,7 +71,8 @@ final class ImageFeedUITests: XCTestCase {
     
     func testProfile() throws {
        sleep(2)
-        app.tabBars.buttons.images["tab_profile_active"].tap()
+        app.tabBars.buttons.element(boundBy: 1).tap()
+        //app.tabBars.buttons.images["tab_profile_active"].tap()
         sleep(2)
         
         XCTAssertTrue(app.staticTexts[login].exists)

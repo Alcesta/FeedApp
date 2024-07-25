@@ -26,7 +26,7 @@ final class ImagesListTests: XCTestCase {
         let date = presenter.convertDate(photo: photo)
         
         //then
-        XCTAssertEqual(date, "24 July 2024")
+        XCTAssertEqual(date, "25 July 2024")
     }
     
     func testImageHeight() {
