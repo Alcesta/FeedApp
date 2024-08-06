@@ -49,12 +49,10 @@ final class SplashViewController: UIViewController {
     }
 }
 
-// MARK: - Extensions SplashViewController
-
 extension SplashViewController: AuthViewControllerDelegate {
     
     private func fetchOAuthToken(_ code: String) {
-        OAuth2Service.shared.fetchOAuthToken(code) { [weak self] result in
+        oAuth2Service.fetchOAuthToken(code) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let token):
@@ -85,7 +83,7 @@ extension SplashViewController: AuthViewControllerDelegate {
         }
     }
     
-    private func showAlert(parameter: String, _ problem: WhatProblem) {
+    private func showAlert(parameter: String, _ problem: typeOfProblem) {
         let alert = UIAlertController(
             title: "Что-то пошло не так(",
             message: "Не удалось войти в систему",
@@ -112,7 +110,7 @@ extension SplashViewController: AuthViewControllerDelegate {
         }
     }
     
-    enum WhatProblem {
+    enum typeOfProblem {
         case tokenProblem
         case profileProblem
     }
